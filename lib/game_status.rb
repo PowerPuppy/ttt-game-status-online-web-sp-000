@@ -19,4 +19,5 @@ def won?(board)
   won = []
   won >> board.select WIN_COMBINATIONS
   return won
+  end
 end
