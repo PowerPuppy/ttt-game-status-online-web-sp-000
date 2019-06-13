@@ -14,3 +14,10 @@ WIN_COMBINATIONS = [
   [0,4,8], # First diagonal
   [2,4,6] # Second diagonal
 ]
+
+def won?(board)
+  won = []
+  won >> board.select WIN_COMBINATIONS
+  return won 
+  
+end
