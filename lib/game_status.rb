@@ -39,7 +39,7 @@ def won?(board)
       return i
     end
     end
-return false    
+return false
 end
 
 def draw?(board)
