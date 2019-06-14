@@ -31,7 +31,7 @@ def won?(board)
   WIN_COMBINATIONS.each do |i|
     won = []
     i.each do |j|
-      won >> j
+      won << j
     end
     if xwin(won)
       return i
