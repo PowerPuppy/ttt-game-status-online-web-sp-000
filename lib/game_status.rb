@@ -29,11 +29,17 @@ end
 
 def won?(board)
   WIN_COMBINATIONS.each do |i|
-  won = []
-  board.each do |i|
-
-  end
-    return won
+    won = []
+    i.each do |j|
+      won >> j
+    end
+    if xwin(won)
+      return i
+    elsif owin(won)
+      return i
+    end
+    end
+return false    
 end
 
 def draw?(board)
