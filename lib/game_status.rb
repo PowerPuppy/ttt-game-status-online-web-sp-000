@@ -5,46 +5,71 @@ end
 
 # Define your WIN_COMBINATIONS constant
 WIN_COMBINATIONS = [
-  [0,1,2], # Top row
-  [3,4,5], # Middle row
-  [6,7,8], # Bottom row
-  [0,3,6], # Left column
-  [1,4,7], # Middle column
-  [2,5,8], # Right column
-  [0,4,8], # First diagonal
-  [2,4,6] # Second diagonal
+  [0,1,2],
+  [3,4,5],
+  [6,7,8],
+  [0,3,6],
+  [1,4,7],
+  [2,5,8],
+  [0,4,8],
+  [2,4,6]
 ]
 
 def xwin(array)
-  array.all? {|x| x == "X" }
+  array.all? { |d| d == "X"}
 end
 
 def owin(array)
-  array.all? {|o| o == "O" }
+  array.all? { |d| d == "O"}
 end
 
 def full?(board)
-  board.full? {|q| q == " " }
+  board.none? { |f| f == " " }
 end
+
 
 def won?(board)
   WIN_COMBINATIONS.each do |i|
-    won = []
+    result = []
     i.each do |j|
-      won << j
+      result << board[j]
     end
-    if xwin(won)
+    if owin(result)
       return i
-    elsif owin(won)
+    elsif xwin(result)
       return i
     end
-return false
+    end
+  return false
 end
 
 def draw?(board)
-  if full?(board) && !won?(board)
-    return true
+  if full?(board)
+    if !won?(board)
+      return true
+    end
   end
     return false
+end
+
+def over?(board)
+  if draw?(board) || won?(board) || full?(board)
+    return true
   end
+  return false
+end
+
+def winner(board)
+  WIN_COMBINATIONS.each do |i|
+    result = []
+    i.each do |j|
+      result << board[j]
+    end
+    if owin(result)
+      return "O"
+    elsif xwin(result)
+      return "X"
+    end
+    end
+  return nil
 end
