@@ -38,7 +38,6 @@ def won?(board)
     elsif owin(won)
       return i
     end
-    end
 return false
 end
 
