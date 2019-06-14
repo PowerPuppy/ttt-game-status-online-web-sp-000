@@ -15,11 +15,30 @@ WIN_COMBINATIONS = [
   [2,4,6] # Second diagonal
 ]
 
+def xwin(array)
+  array.all? {|x| x == "X" }
+end
+
+def owin(array)
+  array.all? {|o| o == "O" }
+end
+
+def full?(board)
+  board.full? {|q| q == " " }
+end
+
 def won?(board)
+  WIN_COMBINATIONS.each do |i|
   won = []
-  board.each do |i| 
-    
-  end 
-    return won
+  board.each do |i|
+
   end
+    return won
+end
+
+def draw?(board)
+  if full?(board) && !won?(board)
+    return true
+  end
+    return false
 end
